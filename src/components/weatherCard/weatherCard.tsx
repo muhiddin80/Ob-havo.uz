@@ -86,10 +86,9 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
   return (
     <div className="w-full flex justify-center">
       <Swiper
-        slidesPerView={1.6}
+        slidesPerView={1.7}
         className="flex! justify-center"
         centeredSlides={true}
-        centeredSlidesBounds={true}
         loop={true}
         navigation={true}
         modules={[Navigation]}

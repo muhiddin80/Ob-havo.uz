@@ -1,26 +1,35 @@
+import { useState } from "react";
+import Search from "./components/SearchInput/search";
 import WeatherCard from "./components/weatherCard/weatherCard";
 import { useGetWeather } from "./hook/weather";
 
 function App() {
-  const { data, isLoading } = useGetWeather("Bukhara");
+  const [city, setCity] = useState("Bukhara");
+  const { data, isLoading } = useGetWeather(city);
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  if (!data) {
-    return (
-      <p className="text-center mt-10 text-red-500">Weather data not found.</p>
-    );
-  }
+  const handleSearch = (selectedCity: string) => {
+    setCity(selectedCity);
+  };
 
   return (
-    <div className="flex mt-10 w-full items-center justify-center">
-      <WeatherCard weather={data} />
+    <div className="flex flex-col items-center mt-10 w-full h-full gap-6">
+      <Search onSearch={handleSearch} />
+
+      {isLoading && (
+        <div className="flex justify-center items-center h-64">
+          <div className="w-16 h-16 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      )}
+
+      {!isLoading && data ? (
+        <WeatherCard weather={data} />
+      ) : (
+        !isLoading && (
+          <p className="text-center mt-10 text-red-500">
+            Weather data not found.
+          </p>
+        )
+      )}
     </div>
   );
 }
