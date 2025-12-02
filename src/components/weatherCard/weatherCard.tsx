@@ -86,7 +86,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
   return (
     <div className="w-full flex justify-center">
       <Swiper
-        slidesPerView={1.7}
+        slidesPerView={1.6}
         className="flex! justify-center"
         centeredSlides={true}
         loop={true}
@@ -98,7 +98,7 @@ const WeatherCard = ({ weather }: WeatherCardProps) => {
           return (
             <SwiperSlide key={index} className="flex justify-center">
               <div
-                className="flex flex-col w-[800px] max-w-[90%] rounded-3xl p-7 gap-10"
+                className="flex flex-col w-[700px] max-w-[90%] rounded-3xl p-7 gap-5"
                 style={{
                   background: "linear-gradient(135deg, #c209f0, #211825)",
                 }}

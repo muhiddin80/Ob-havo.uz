@@ -2,6 +2,7 @@ import { useState } from "react";
 import Search from "./components/SearchInput/search";
 import WeatherCard from "./components/weatherCard/weatherCard";
 import { useGetWeather } from "./hook/weather";
+import SmallCards from "./components/SmallCards/smallCards";
 
 function App() {
   const [city, setCity] = useState("Bukhara");
@@ -22,7 +23,10 @@ function App() {
       )}
 
       {!isLoading && data ? (
-        <WeatherCard weather={data} />
+        <>
+          <WeatherCard weather={data} />
+          <SmallCards weather={data} />
+        </>
       ) : (
         !isLoading && (
           <p className="text-center mt-10 text-red-500">
